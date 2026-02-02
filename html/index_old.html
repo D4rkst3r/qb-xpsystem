@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XP System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Circular XP Display -->
+    <div id="xp-circular" class="xp-container circular-mode">
+        <div class="circular-wrapper">
+            <svg class="circular-progress" width="120" height="120">
+                <circle class="bg-circle" cx="60" cy="60" r="50"></circle>
+                <circle class="progress-circle" cx="60" cy="60" r="50"></circle>
+            </svg>
+            <div class="circular-content">
+                <div class="level-badge">
+                    <span class="level-text">Level</span>
+                    <span class="level-number" id="circular-level">1</span>
+                </div>
+            </div>
+        </div>
+        <div class="xp-info">
+            <div class="xp-text">
+                <span id="circular-current-xp">0</span> / <span id="circular-required-xp">100</span> XP
+            </div>
+            <div class="xp-percentage" id="circular-percentage">0%</div>
+        </div>
+    </div>
+
+    <!-- Rectangular XP Display -->
+    <div id="xp-rectangular" class="xp-container rectangular-mode">
+        <div class="rectangular-wrapper">
+            <div class="rect-header">
+                <div class="level-badge-rect">
+                    <span class="level-icon">⭐</span>
+                    <span class="level-text">Level <span id="rect-level">1</span></span>
+                </div>
+                <div class="xp-percentage-rect" id="rect-percentage">0%</div>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="rect-progress-bar">
+                    <div class="progress-bar-shine"></div>
+                </div>
+            </div>
+            <div class="xp-text-rect">
+                <span id="rect-current-xp">0</span> / <span id="rect-required-xp">100</span> XP
+            </div>
+        </div>
+    </div>
+
+    <!-- Level Up Animation -->
+    <div id="levelup-animation" class="levelup-container">
+        <div class="levelup-content">
+            <div class="levelup-icon">🎉</div>
+            <div class="levelup-title">LEVEL UP!</div>
+            <div class="levelup-level">Level <span id="levelup-level">1</span></div>
+            <div class="levelup-shine"></div>
+        </div>
+    </div>
+
+    <!-- Stats Popup -->
+    <div id="stats-popup" class="stats-container" onclick="if(event.target.id === 'stats-popup') closeStats()">
+        <div class="stats-content" onclick="event.stopPropagation()">
+            <div class="stats-header">
+                <h2>Spieler Statistiken <span id="stats-countdown" style="font-size: 14px; opacity: 0.7;"></span></h2>
+                <button class="stats-close" onclick="closeStats()" title="Schließen (schließt automatisch in 10s)">✕</button>
+            </div>
+            <div class="stats-body" id="stats-message">
+                <!-- Stats content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,777 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Press+Start+2P&family=Orbitron:wght@400;700;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+}
+
+/* ========================================
+   BASE XP CONTAINER
+   ======================================== */
+
+.xp-display {
+    position: fixed;
+    z-index: 1000;
+    pointer-events: none;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* ========================================
+   POSITIONS
+   ======================================== */
+
+.xp-display.pos-top-left {
+    top: 20px;
+    left: 20px;
+}
+
+.xp-display.pos-top-right {
+    top: 20px;
+    right: 20px;
+}
+
+.xp-display.pos-bottom-left {
+    bottom: 20px;
+    left: 20px;
+}
+
+.xp-display.pos-bottom-right {
+    bottom: 20px;
+    right: 20px;
+}
+
+.xp-display.pos-center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* ========================================
+   SIZES
+   ======================================== */
+
+.xp-display.size-small {
+    transform: scale(0.7);
+}
+
+.xp-display.size-medium {
+    transform: scale(1);
+}
+
+.xp-display.size-large {
+    transform: scale(1.3);
+}
+
+/* ========================================
+   STYLE 1: MODERN (Default)
+   ======================================== */
+
+.style-modern .xp-content {
+    background: linear-gradient(135deg, rgba(30, 30, 30, 0.95) 0%, rgba(20, 20, 20, 0.95) 100%);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    min-width: 200px;
+}
+
+.style-modern .level-circle {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 15px;
+    position: relative;
+}
+
+.style-modern .circle-svg {
+    transform: rotate(-90deg);
+}
+
+.style-modern .circle-bg {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.1);
+    stroke-width: 8;
+}
+
+.style-modern .circle-progress {
+    fill: none;
+    stroke: url(#modernGradient);
+    stroke-width: 8;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.5s ease;
+}
+
+.style-modern .level-number {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 32px;
+    font-weight: 700;
+    color: white;
+}
+
+.style-modern .xp-info-text {
+    text-align: center;
+    color: white;
+    font-size: 14px;
+}
+
+/* ========================================
+   STYLE 2: MINIMAL
+   ======================================== */
+
+.style-minimal .xp-content {
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 8px;
+    padding: 10px 15px;
+    border-left: 3px solid #667eea;
+    min-width: 150px;
+}
+
+.style-minimal .level-text {
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.style-minimal .progress-bar-mini {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.style-minimal .progress-fill-mini {
+    height: 100%;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    transition: width 0.5s ease;
+    border-radius: 4px;
+}
+
+.style-minimal .xp-text-mini {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 11px;
+    margin-top: 3px;
+}
+
+/* ========================================
+   STYLE 3: GAMER
+   ======================================== */
+
+.style-gamer .xp-content {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border: 3px solid #0f3460;
+    border-radius: 0;
+    padding: 15px 20px;
+    box-shadow: 0 0 20px rgba(15, 52, 96, 0.5);
+    font-family: 'Orbitron', sans-serif;
+}
+
+.style-gamer .level-display {
+    text-align: center;
+    color: #00d9ff;
+    font-size: 24px;
+    font-weight: 900;
+    text-shadow: 0 0 10px #00d9ff;
+    margin-bottom: 10px;
+}
+
+.style-gamer .progress-segments {
+    display: flex;
+    gap: 3px;
+    margin-bottom: 8px;
+}
+
+.style-gamer .segment {
+    flex: 1;
+    height: 12px;
+    background: rgba(0, 217, 255, 0.2);
+    transition: background 0.3s ease;
+}
+
+.style-gamer .segment.filled {
+    background: linear-gradient(90deg, #00d9ff 0%, #ff00ff 100%);
+    box-shadow: 0 0 8px #00d9ff;
+}
+
+.style-gamer .xp-display-text {
+    color: #00d9ff;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* ========================================
+   STYLE 4: GLASS
+   ======================================== */
+
+.style-glass .xp-content {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    padding: 25px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.style-glass .glass-level {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 700;
+    background: linear-gradient(45deg, #ffffff 0%, #e0e0e0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 15px;
+}
+
+.style-glass .glass-bar {
+    width: 100%;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.style-glass .glass-fill {
+    height: 100%;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.6) 100%);
+    border-radius: 10px;
+    transition: width 0.5s ease;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+.style-glass .glass-text {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+/* ========================================
+   STYLE 5: NEON
+   ======================================== */
+
+.style-neon .xp-content {
+    background: #0a0a0a;
+    border: 2px solid #ff00ff;
+    border-radius: 0;
+    padding: 20px;
+    box-shadow: 
+        0 0 20px #ff00ff,
+        inset 0 0 20px rgba(255, 0, 255, 0.1);
+    font-family: 'Orbitron', sans-serif;
+}
+
+.style-neon .neon-level {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 900;
+    color: #00ffff;
+    text-shadow: 
+        0 0 5px #00ffff,
+        0 0 10px #00ffff,
+        0 0 20px #00ffff,
+        0 0 40px #00ffff;
+    margin-bottom: 15px;
+    animation: neonPulse 2s ease-in-out infinite;
+}
+
+@keyframes neonPulse {
+    0%, 100% { 
+        text-shadow: 
+            0 0 5px #00ffff,
+            0 0 10px #00ffff,
+            0 0 20px #00ffff,
+            0 0 40px #00ffff;
+    }
+    50% { 
+        text-shadow: 
+            0 0 10px #00ffff,
+            0 0 20px #00ffff,
+            0 0 40px #00ffff,
+            0 0 80px #00ffff;
+    }
+}
+
+.style-neon .neon-bar {
+    width: 100%;
+    height: 15px;
+    background: rgba(255, 0, 255, 0.1);
+    border: 1px solid #ff00ff;
+    position: relative;
+    overflow: hidden;
+}
+
+.style-neon .neon-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #ff00ff 0%, #00ffff 100%);
+    transition: width 0.5s ease;
+    box-shadow: 
+        0 0 10px #ff00ff,
+        0 0 20px #00ffff;
+}
+
+.style-neon .neon-text {
+    text-align: center;
+    color: #ff00ff;
+    font-size: 12px;
+    margin-top: 10px;
+    text-shadow: 0 0 5px #ff00ff;
+}
+
+/* ========================================
+   STYLE 6: RETRO
+   ======================================== */
+
+.style-retro .xp-content {
+    background: #000000;
+    border: 4px solid #00ff00;
+    border-radius: 0;
+    padding: 15px;
+    font-family: 'Press Start 2P', cursive;
+    box-shadow: 
+        0 0 0 2px #000000,
+        0 0 0 6px #00ff00;
+    image-rendering: pixelated;
+}
+
+.style-retro .retro-level {
+    text-align: center;
+    color: #00ff00;
+    font-size: 16px;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 0 #006600;
+}
+
+.style-retro .retro-bar {
+    width: 100%;
+    height: 20px;
+    background: #003300;
+    border: 2px solid #00ff00;
+    position: relative;
+    overflow: hidden;
+}
+
+.style-retro .retro-fill {
+    height: 100%;
+    background: repeating-linear-gradient(
+        90deg,
+        #00ff00 0px,
+        #00ff00 4px,
+        #00cc00 4px,
+        #00cc00 8px
+    );
+    transition: width 0.3s steps(20);
+}
+
+.style-retro .retro-text {
+    text-align: center;
+    color: #00ff00;
+    font-size: 8px;
+    margin-top: 8px;
+}
+
+/* ========================================
+   STYLE 7: ELEGANT
+   ======================================== */
+
+.style-elegant .xp-content {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    border: 2px solid #d4af37;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 
+        0 10px 40px rgba(212, 175, 55, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.style-elegant .elegant-level {
+    text-align: center;
+    font-size: 36px;
+    font-weight: 700;
+    background: linear-gradient(45deg, #d4af37 0%, #f9e4b7 50%, #d4af37 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.5));
+}
+
+.style-elegant .elegant-bar {
+    width: 100%;
+    height: 18px;
+    background: rgba(212, 175, 55, 0.1);
+    border-radius: 9px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    overflow: hidden;
+}
+
+.style-elegant .elegant-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #d4af37 0%, #f9e4b7 50%, #d4af37 100%);
+    background-size: 200% 100%;
+    transition: width 0.5s ease;
+    animation: elegantShine 3s ease-in-out infinite;
+}
+
+@keyframes elegantShine {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.style-elegant .elegant-text {
+    text-align: center;
+    color: #d4af37;
+    font-size: 13px;
+    margin-top: 10px;
+    font-weight: 500;
+}
+
+/* ========================================
+   STYLE 8: COMPACT
+   ======================================== */
+
+.style-compact .xp-content {
+    background: rgba(0, 0, 0, 0.9);
+    border-radius: 20px;
+    padding: 8px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    min-width: 100px;
+}
+
+.style-compact .compact-inline {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.style-compact .compact-level {
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.style-compact .compact-bar {
+    flex: 1;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.style-compact .compact-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    transition: width 0.5s ease;
+}
+
+/* ========================================
+   STYLE 9: ANIMATED
+   ======================================== */
+
+.style-animated .xp-content {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 40px rgba(102, 126, 234, 0.4);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 10px 40px rgba(102, 126, 234, 0.4);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 15px 60px rgba(102, 126, 234, 0.6);
+    }
+}
+
+.style-animated .animated-level {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 15px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+}
+
+.style-animated .animated-bar {
+    width: 100%;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.style-animated .animated-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #ffffff 0%, rgba(255, 255, 255, 0.8) 100%);
+    transition: width 0.5s ease;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.style-animated .animated-text {
+    text-align: center;
+    color: white;
+    font-size: 13px;
+    margin-top: 10px;
+    font-weight: 500;
+}
+
+/* ========================================
+   STYLE 10: RGB
+   ======================================== */
+
+.style-rgb .xp-content {
+    background: #000000;
+    border: 3px solid #ff0000;
+    border-radius: 15px;
+    padding: 20px;
+    animation: rgbBorder 3s linear infinite;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+}
+
+@keyframes rgbBorder {
+    0% { 
+        border-color: #ff0000;
+        box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+    }
+    33% { 
+        border-color: #00ff00;
+        box-shadow: 0 0 30px rgba(0, 255, 0, 0.5);
+    }
+    66% { 
+        border-color: #0000ff;
+        box-shadow: 0 0 30px rgba(0, 0, 255, 0.5);
+    }
+    100% { 
+        border-color: #ff0000;
+        box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+    }
+}
+
+.style-rgb .rgb-level {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+    background: linear-gradient(90deg, #ff0000 0%, #00ff00 33%, #0000ff 66%, #ff0000 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rgbText 3s linear infinite;
+    margin-bottom: 15px;
+}
+
+@keyframes rgbText {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
+.style-rgb .rgb-bar {
+    width: 100%;
+    height: 18px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 9px;
+    overflow: hidden;
+}
+
+.style-rgb .rgb-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #ff0000 0%, #00ff00 50%, #0000ff 100%);
+    background-size: 200% 100%;
+    transition: width 0.5s ease;
+    animation: rgbFill 3s linear infinite;
+}
+
+@keyframes rgbFill {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
+.style-rgb .rgb-text {
+    text-align: center;
+    color: white;
+    font-size: 13px;
+    margin-top: 10px;
+    animation: rgbTextColor 3s linear infinite;
+}
+
+@keyframes rgbTextColor {
+    0% { color: #ff0000; }
+    33% { color: #00ff00; }
+    66% { color: #0000ff; }
+    100% { color: #ff0000; }
+}
+
+/* ========================================
+   LEVEL UP ANIMATION
+   ======================================== */
+
+.levelup-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    animation: fadeIn 0.3s ease;
+}
+
+.levelup-container.active {
+    display: flex;
+}
+
+.levelup-content {
+    text-align: center;
+    animation: scaleIn 0.5s ease;
+}
+
+.levelup-icon {
+    font-size: 120px;
+    animation: bounce 0.6s ease;
+}
+
+.levelup-title {
+    font-size: 48px;
+    font-weight: 700;
+    color: white;
+    text-shadow: 0 0 20px rgba(102, 126, 234, 0.8);
+    margin: 20px 0;
+}
+
+.levelup-level {
+    font-size: 36px;
+    font-weight: 600;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-30px); }
+}
+
+/* ========================================
+   STATS POPUP
+   ======================================== */
+
+.stats-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    pointer-events: none;
+}
+
+.stats-container.active {
+    display: flex;
+    pointer-events: all;
+}
+
+.stats-content {
+    background: linear-gradient(135deg, rgba(30, 30, 30, 0.98) 0%, rgba(20, 20, 20, 0.98) 100%);
+    border-radius: 16px;
+    min-width: 400px;
+    max-width: 500px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: slideUp 0.4s ease;
+    overflow: hidden;
+}
+
+.stats-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 20px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stats-header h2 {
+    font-size: 22px;
+    font-weight: 600;
+    color: white;
+    margin: 0;
+}
+
+.stats-close {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    pointer-events: all;
+}
+
+.stats-close:hover {
+    background: rgba(255, 100, 100, 0.8);
+    transform: rotate(90deg);
+}
+
+.stats-body {
+    padding: 25px;
+    color: white;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
