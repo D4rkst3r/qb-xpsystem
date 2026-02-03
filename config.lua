@@ -50,7 +50,7 @@ Config.LogSuspiciousActivity = true
 -- ========================================
 
 Config.DiscordWebhook =
-'https://discord.com/api/webhooks/1467991292087894149/ApYeQh2-ivn4BcILGI-CxKEKX3H-gmxNmrM2Q-FhVTYfJp615iEB2OTYULMOZuQVybgn'                         -- Add your webhook URL here
+''                         -- Add your webhook URL here
 
 Config.DiscordLogs = {
     enabled = true,
