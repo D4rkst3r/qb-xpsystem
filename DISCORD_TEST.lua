@@ -4,7 +4,7 @@
 -- 
 -- Ersetze in deiner config.lua Zeile 52 mit:
 
-Config.DiscordWebhook = 'https://discord.com/api/webhooks/1467991292087894149/ApYeQh2-ivn4BcILGI-CxKEKX3H-gmxNmrM2Q-FhVTYfJp615iEB2OTYULMOZuQVybgn'
+Config.DiscordWebhook = ''
 
 -- Stelle sicher, dass diese Einstellungen aktiv sind:
 Config.DiscordLogs = {
